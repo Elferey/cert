@@ -7,8 +7,16 @@ resource "virtualbox_vm" "node" {
   user_data = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
 
   network_adapter {
-    type           = "bridged"
-    host_interface = "en0"
+    type           = "hostonly"
+    host_interface = "vboxnet1"
   }
+}
+
+output "IPAddr" {
+  value = element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, 1)
+}
+
+output "IPAddr_2" {
+  value = element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, 2)
 }
 
