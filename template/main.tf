@@ -1,3 +1,13 @@
+terraform {
+  required_providers {
+    virtualbox = {
+      source = "terra-farm/virtualbox"
+      version = "0.2.1"
+    }
+  }
+}
+
+
 resource "virtualbox_vm" "node" {
   count     = 2
   name      = format("node-%02d", count.index + 1)
