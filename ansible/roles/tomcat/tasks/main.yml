@@ -1,0 +1,18 @@
+---
+# tasks file for tomcat
+- name: Ensure install packages
+  apt: name={{item}} state=installed
+  with_items:
+    - docker.io
+    - docker-compose
+    - git
+
+- name: Clone remote repository
+  git:
+        repo: https://github.com/Elferey/less12.git
+        dest: /tmp/github
+        clone: yes
+        update: yes
+
+- name: docker run
+  raw: docker-compose up -d

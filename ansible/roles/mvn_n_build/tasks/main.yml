@@ -1,0 +1,16 @@
+---
+# tasks file for mvn_n_build
+- name: Build java app
+  raw: cd {{ git_dir }}/cert/boxfuse-sample-java-war-hello && mvn package
+
+- name: Send *.war file in tomcat host
+#  synchronize:
+#    src: ./target/hello-1.0.war
+#    dest: /var/lib/tomcat9/webapps
+#    mode: push
+#    private_key: ~/.ssh/id_rsa
+#    verify_host: yes
+#  delegate_to: 10.129.0.25
+  fetch:
+     src: /tmp/github/boxfuse-sample-java-war-hello/target/hello-1.0.war
+     dest: 192.168.1.42:/tmp
