@@ -1,6 +1,6 @@
 ---
 - name: Java app building
-  hosts: web
+  hosts: build
   become: yes
 
   roles:
@@ -10,7 +10,7 @@
 
 
 - name: tomcat install
-  hosts: db
+  hosts: deploy
   become: yes
 
   roles:
