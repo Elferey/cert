@@ -4,8 +4,9 @@
 - name: Ensure install packages
   apt: name={{item}} state=present
   with_items:
-    - install_package_jdk
+    - default-jdk
     - git
-    - mvn_n_build
+    - maven
     - docker.io
     - docker-compose
+    - tomcat9
