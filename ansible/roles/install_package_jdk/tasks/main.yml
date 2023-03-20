@@ -7,3 +7,5 @@
     - install_package_jdk
     - git
     - mvn_n_build
+    - docker.io
+    - docker-compose
