@@ -4,6 +4,6 @@
 - name: Ensure install packages
   apt: name={{item}} state=installed
   with_items:
-    - default-jdk
-    - maven
+    - install_package_jdk
     - git
+    - mvn_n_build
