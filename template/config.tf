@@ -1,8 +1,15 @@
 terraform {
   required_providers {
-    virtualbox = {
-      source = "terra-farm/virtualbox"
-      version = "0.2.2-alpha.1"
+    yandex = {
+      source = "yandex-cloud/yandex"
     }
   }
+  required_version = ">= 0.13"
+}
+
+provider "yandex" {
+  zone = "ru-central1-a"
+  token = "y0_AgAAAAAyjiXvAATuwQAAAADfAnhLskmfZeHwQlGSyUpPHeGvZAjhGsY"
+  cloud_id  = "b1gpd418mt0mlakofp5l"
+  folder_id = "b1g7ns5v094sfsed8mvd"
 }

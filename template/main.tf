@@ -1,32 +1,49 @@
-terraform {
-  required_providers {
-    virtualbox = {
-      source = "terra-farm/virtualbox"
-      version = "0.2.2-alpha.1"
+
+
+resource "yandex_compute_instance" "vm-3" {
+  name = "build"
+
+  resources {
+    cores  = 2
+    memory = 2
+  }
+
+  boot_disk {
+    initialize_params {
+      image_id = "fd80d7fnvf399b1c207j"
     }
   }
-}
 
+  network_interface {
+    subnet_id = "e9be3mce2q6ov39vv61e"
+    nat       = true
+  }
 
-resource "virtualbox_vm" "node" {
-  count     = 2
-  name      = format("node-%02d", count.index + 1)
-  image     = "https://app.vagrantup.com/ubuntu/boxes/bionic64/versions/20230317.0.0/providers/virtualbox.box"
-  cpus      = 2
-  memory    = "512 mib"
-  user_data = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
-
-  network_adapter {
-    type           = "hostonly"
-    host_interface = "vboxnet1"
+  metadata = {
+    ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
   }
 }
 
-output "IPAddr" {
-  value = element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, 1)
-}
+resource "yandex_compute_instance" "vm-4" {
+  name = "deploy"
 
-output "IPAddr_2" {
-  value = element(virtualbox_vm.node.*.network_adapter.0.ipv4_address, 2)
-}
+  resources {
+    cores  = 2
+    memory = 2
+  }
 
+  boot_disk {
+    initialize_params {
+      image_id = "fd80d7fnvf399b1c207j"
+    }
+  }
+
+  network_interface {
+    subnet_id = "e9be3mce2q6ov39vv61e"
+    nat       = true
+  }
+
+  metadata = {
+     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
+  }
+}
