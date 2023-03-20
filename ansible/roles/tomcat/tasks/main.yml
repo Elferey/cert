@@ -1,11 +1,5 @@
 ---
 # tasks file for tomcat
-- name: Ensure install packages
-  apt: name={{item}} state=installed
-  with_items:
-    - docker.io
-    - docker-compose
-    - git
 
 - name: Clone remote repository
   git:
