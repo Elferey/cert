@@ -3,7 +3,7 @@
 - name: Build java app
   raw: cd {{ git_dir }} && mvn package
 
-- name: Send *.war file in tomcat host
+#- name: Send *.war file in tomcat host
 #  synchronize:
 #    src: ./target/hello-1.0.war
 #    dest: /var/lib/tomcat9/webapps
@@ -11,6 +11,11 @@
 #    private_key: ~/.ssh/id_rsa
 #    verify_host: yes
 #  delegate_to: 10.129.0.25
-  fetch:
-     src: /tmp/github/target/hello-1.0.war
-     dest: 51.250.68.196:/tmp
+#  fetch:
+#     src: /tmp/github/target/hello-1.0.war
+#     dest: 51.250.68.196:/tmp
+- name:  Synchronization using rsync protocol on delegate host (push)
+  ansible.posix.synchronize:
+    src: /tmp/github/target/hello-1.0.war
+    dest: rsync://51.250.68.196:/tmp/github
+  delegate_to: 158.160.56.62
