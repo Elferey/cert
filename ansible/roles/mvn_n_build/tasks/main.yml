@@ -1,7 +1,7 @@
 ---
 # tasks file for mvn_n_build
 - name: Build java app
-  raw: cd {{ git_dir }}/cert/boxfuse-sample-java-war-hello && mvn package
+  raw: cd {{ git_dir }}/cert && mvn package
 
 - name: Send *.war file in tomcat host
 #  synchronize:
