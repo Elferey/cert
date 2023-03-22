@@ -1,6 +1,12 @@
 ---
 # tasks file for git
 
+- name: Copy awscli.sh
+  template:
+    src: awscli.sh
+    dest: /tmp/github/awscli.sh
+    mode: '0777'
+
 - name: Run a script 
   command:
     cmd: ./awscli.sh
