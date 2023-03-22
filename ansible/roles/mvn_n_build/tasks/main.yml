@@ -15,7 +15,7 @@
 #     src: /tmp/github/target/hello-1.0.war
 #     dest: 51.250.68.196:/tmp
 - name:  Synchronization using rsync protocol on delegate host (push)
-  ansible.posix.synchronize:
+  synchronize:
     src: /tmp/github/target/hello-1.0.war
     dest: rsync://51.250.68.196:/tmp/github
   delegate_to: 158.160.56.62
