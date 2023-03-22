@@ -1,6 +1,9 @@
 ---
 # tasks file for tomcat
 
+- name: docker run
+  raw: apt update
+
 - name: Ensure install tomcat9
   apt: name={{item}} state=present
   with_items:
