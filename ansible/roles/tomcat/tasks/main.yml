@@ -9,4 +9,4 @@
         update: yes
 
 - name: docker run
-  raw: docker-compose up -d
+  raw: cd /tmp/github && docker-compose up -d
