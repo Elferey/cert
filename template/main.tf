@@ -1,6 +1,6 @@
 
 
-resource "yandex_compute_instance" "vm-3" {
+resource "yandex_compute_instance" "vm-1" {
   name = "build"
 
   resources {
@@ -20,11 +20,11 @@ resource "yandex_compute_instance" "vm-3" {
   }
 
   metadata = {
-    ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
+    ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
   }
 }
 
-resource "yandex_compute_instance" "vm-4" {
+resource "yandex_compute_instance" "vm-2" {
   name = "deploy"
 
   resources {
@@ -44,7 +44,7 @@ resource "yandex_compute_instance" "vm-4" {
   }
 
   metadata = {
-     ssh-keys = "ubuntu:${file("~/.ssh/yandex_key_ssh.pub")}"
+     ssh-keys = "ubuntu:${file("~/.ssh/id_rsa.pub")}"
   }
 }
 
