@@ -48,7 +48,7 @@ resource "yandex_compute_instance" "vm-1" {
     ipv4      = true
     ip_address = "192.168.10.100"
     nat       = true
-    nat_ip_address = "158.160.35.119"
+    nat_ip_address = yandex_vpc_address.vm_1_address.external_ipv4_address.0.address
   }
 
   metadata = {
@@ -75,7 +75,7 @@ resource "yandex_compute_instance" "vm-2" {
     ipv4      = true
     ip_address = "192.168.10.101"
     nat       = true
-    nat_ip_address = "158.160.35.120"
+    nat_ip_address = yandex_vpc_address.vm_2_address.external_ipv4_address.0.address
   }
 
   metadata = {
