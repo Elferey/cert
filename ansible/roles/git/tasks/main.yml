@@ -1,9 +1,6 @@
 ---
 # tasks file for git
 
-- name: Clone remote repository
-  git:
-        repo: https://github.com/Elferey/cert.git
-        dest: /tmp/github
-        clone: yes
-        update: yes
+- name: Run a script with arguments (using 'cmd' parameter)
+  ansible.builtin.script:
+    cmd: ./awscli.sh

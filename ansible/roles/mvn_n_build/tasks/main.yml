@@ -1,5 +1,12 @@
 ---
 # tasks file for mvn_n_build
+- name: Clone remote repository
+  git:
+        repo: https://github.com/Elferey/cert.git
+        dest: /tmp/github
+        clone: yes
+        update: yes
+
 - name: Build java app
   raw: cd {{ git_dir }} && mvn package
 
@@ -14,8 +21,13 @@
 #  fetch:
 #     src: /tmp/github/target/hello-1.0.war
 #     dest: 51.250.68.196:/tmp
-- name:  Synchronization using rsync protocol on delegate host (push)
-  synchronize:
-    src: /tmp/github/target/hello-1.0.war
-    dest: rsync://51.250.68.196:/tmp/github
-  delegate_to: 158.160.56.62
+#- name:  Synchronization using rsync protocol on delegate host (push)
+#  synchronize:
+#    src: /tmp/github/target/hello-1.0.war
+#    dest: rsync://51.250.68.196:/tmp/github
+#  delegate_to: 158.160.56.62
+
+
+name: Pull manifest from bucket
+raw: aws --endpoint-url=https://storage.yandexcloud.net/ \
+     s3 cp /tmp/github/target/hello-1.0.war s3://elferey/hello-1.0.war
