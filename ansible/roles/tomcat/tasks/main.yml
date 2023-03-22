@@ -7,11 +7,10 @@
 - name: Ensure install tomcat9
   apt: name={{item}} state=present
   with_items:
-    - tomcat9
     - docker.io
     - docker-compose
   notify:
-    - restart tomcat
+    - restart docker
 
 - name: Clone remote repository
   git:
