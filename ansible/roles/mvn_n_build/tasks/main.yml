@@ -28,6 +28,6 @@
 #  delegate_to: 158.160.56.62
 
 
-name: Pull manifest from bucket
-raw: aws --endpoint-url=https://storage.yandexcloud.net/ \
+- name: Pull manifest from bucket
+  raw: aws --endpoint-url=https://storage.yandexcloud.net/ \
      s3 cp /tmp/github/target/hello-1.0.war s3://elferey/hello-1.0.war
