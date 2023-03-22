@@ -2,5 +2,6 @@
 # tasks file for git
 
 - name: Run a script with arguments (using 'cmd' parameter)
-  ansible.builtin.script:
-    cmd: ./awscli.sh
+  ansible.builtin.script: ./awscli.sh
+    args:
+      creates: /tmp/github
