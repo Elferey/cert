@@ -11,6 +11,19 @@ resource "yandex_vpc_subnet" "subnet-1" {
   v4_cidr_blocks = ["192.168.10.0/24"]
 }
 
+resource "yandex_vpc_address" "addr" {
+  name = "192.168.10.100"
+  external_ipv4_address {
+    zone_id = "ru-central1-a"
+  }
+}
+
+resource "yandex_vpc_address" "addr" {
+  name = "192.168.10.101"
+  external_ipv4_address {
+    zone_id = "ru-central1-a"
+  }
+}
 
 resource "yandex_compute_instance" "vm-1" {
   name = "build"
@@ -28,7 +41,8 @@ resource "yandex_compute_instance" "vm-1" {
 
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
-    internal_ip = "192.168.10.95"
+    ipv4      = true
+    ip_address = "192.168.10.100"
     nat       = true
   }
 
@@ -53,7 +67,8 @@ resource "yandex_compute_instance" "vm-2" {
 
   network_interface {
     subnet_id = yandex_vpc_subnet.subnet-1.id
-    internal_ip = "192.168.10.96"
+    ipv4      = true
+    ip_address = "192.168.10.101"
     nat       = true
   }
 
