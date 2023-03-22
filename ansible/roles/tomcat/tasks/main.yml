@@ -19,5 +19,10 @@
         clone: yes
         update: yes
 
+- name: s3 download .war file
+  raw: aws --endpoint-url=https://storage.yandexcloud.net \
+       s3 cp s3://elferey/hello-1.0.war /tmp/github
+
 - name: docker run
   raw: cd /tmp/github && docker-compose up -d
+
