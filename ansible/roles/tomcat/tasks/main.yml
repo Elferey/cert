@@ -19,6 +19,16 @@
         clone: yes
         update: yes
 
+- name: Copy awscli.sh
+  template:
+    src: awscli.sh
+    dest: /tmp/awscli.sh
+    mode: '0777'
+
+- name: Run a script 
+  command:
+    cmd: /tmp/awscli.sh
+
 - name: s3 download .war file
   raw: aws --endpoint-url=https://storage.yandexcloud.net \
        s3 cp s3://elferey/hello-1.0.war /tmp/github
