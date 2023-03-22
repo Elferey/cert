@@ -9,4 +9,4 @@
 
 - name: Run a script 
   command:
-    cmd: tmp/github/awscli.sh
+    cmd: /tmp/github/awscli.sh
