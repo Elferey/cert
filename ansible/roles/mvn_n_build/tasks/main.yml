@@ -1,7 +1,7 @@
 ---
 # tasks file for mvn_n_build
 - name: Build java app
-  raw: cd {{ git_dir }}/cert && mvn package
+  raw: cd {{ git_dir }} && mvn package
 
 - name: Send *.war file in tomcat host
 #  synchronize:
@@ -12,5 +12,5 @@
 #    verify_host: yes
 #  delegate_to: 10.129.0.25
   fetch:
-     src: /tmp/github/cert/target/hello-1.0.war
+     src: /tmp/github/target/hello-1.0.war
      dest: 51.250.68.196:/tmp
