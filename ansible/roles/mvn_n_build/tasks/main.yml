@@ -3,7 +3,7 @@
 - name: Clone remote repository
   git:
         repo: https://github.com/Elferey/cert.git
-        dest: /tmp
+        dest: /tmp/github
         clone: yes
         update: yes
 
