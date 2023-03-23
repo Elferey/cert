@@ -9,6 +9,13 @@ pipeline {
               sh 'mv ./template/.terraformrc ~/.terraformrc'
           }
       }
+
+      stage ('Slepp 2 min') {
+          steps {
+              sleep 120
+          }
+      }
+
       stage ('Launch terraform apply') {
           steps {
               sh 'cd ./template && terraform init && terraform plan -out=tfplan -input=false && terraform apply --input=false tfplan'
