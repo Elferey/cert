@@ -11,24 +11,6 @@ resource "yandex_vpc_subnet" "subnet-1" {
   v4_cidr_blocks = ["192.168.10.0/24"]
 }
 
-#resource "yandex_vpc_address" "vm_1_address" {
-#  name = "vm1"
-#  
-#  external_ipv4_address {
-#    zone_id = "ru-central1-a"
-#    address = "158.160.35.119"
-#  }
-#}
-
-#resource "yandex_vpc_address" "vm_2_address" {
-#  name = "vm2"
-#  
-#  external_ipv4_address {
-#    zone_id = "ru-central1-a"
-#    address = "158.160.35.120"
-#  }
-#}
-
 resource "yandex_compute_instance" "vm-1" {
   name = "build"
 
