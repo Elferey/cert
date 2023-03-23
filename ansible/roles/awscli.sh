@@ -14,4 +14,6 @@ if [[ $? == 1 ]]; then
     aws configure set aws_secret_access_key $key
     aws configure set region $region
     aws configure set output $format
+else
+    echo "aws already installed $aws"
 fi
