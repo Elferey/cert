@@ -33,8 +33,8 @@
   raw: aws --endpoint-url=https://storage.yandexcloud.net \
        s3 cp s3://elferey/hello-1.0.war /tmp/github
 
-- name: sleep 2 min
-  raw: sleep 120s
+- name: sleep 1 min
+  raw: sleep 60s
 
 - name: docker run
   raw: service docker start && cd /tmp/github && docker-compose up -d
