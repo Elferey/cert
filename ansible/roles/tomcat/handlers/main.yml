@@ -1,5 +1,3 @@
 ---
 # handlers file for tomcat
 
-- name: restart docker
-  service: name=docker state=restarted

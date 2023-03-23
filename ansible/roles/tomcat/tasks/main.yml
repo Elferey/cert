@@ -9,8 +9,6 @@
   with_items:
     - docker.io
     - docker-compose
-  notify:
-    - restart docker
 
 - name: Clone remote repository
   git:
