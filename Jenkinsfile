@@ -10,21 +10,21 @@ pipeline {
           }
       }
 
+      stage ('Launch terraform apply') {
+          steps {
+              sh 'cd ./template && terraform init && terraform apply -auto-approve'
+          }
+      }
+      
       stage ('Slepp 2 min') {
           steps {
               sleep 120
           }
       }
 
-      stage ('Launch terraform apply') {
-          steps {
-              sh 'cd ./template && terraform init && terraform plan -out=tfplan -input=false && terraform apply --input=false tfplan'
-          }
-      }
-      
       stage ('Launch ansible playbook') {
           steps {
-              sh 'cd ./ansible/roles && ls -l && sudo ansible-playbook roles.yaml -u ubuntu'
+              sh 'cd ./ansible/roles && sudo ansible-playbook roles.yaml -u ubuntu'
           }
       }
   }
