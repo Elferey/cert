@@ -6,19 +6,18 @@ pipeline {
       stage ('Clone repo with .tf file') {
           steps {
               git 'https://github.com/Elferey/cert.git'
+              sh 'mv ./template/.terraformrc ~/.terraformrc'
           }
       }
       stage ('Launch terraform apply') {
           steps {
-              sh 'pwd && ls -l'
-              sh 'cd ./template && terraform apply'
+              sh 'cd ./template && terraform init && terraform plan -out=tfplan -input=false && terraform apply --input=false tfplan'
           }
       }
       
       stage ('Launch ansible playbook') {
           steps {
-              sh 'pwd && ls -l'
-              sh 'cd ./ansible && ansible-playbook roles.yaml'
+              sh 'cd ./ansible/roles && ls -l && sudo ansible-playbook roles.yaml -u ubuntu'
           }
       }
   }
