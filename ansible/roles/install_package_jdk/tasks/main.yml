@@ -1,7 +1,7 @@
 ---
 # tasks file for common
 
-- name: docker run
+- name: apt update
   raw: apt update
 
 - name: Ensure install packages

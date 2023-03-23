@@ -1,16 +1,16 @@
 ---
 # tasks file for tomcat
 
-- name: docker run
+- name: apt update
   raw: apt update
 
-- name: Ensure install tomcat9
+- name: Ensure install docker and docker-compose
   apt: name={{item}} state=present
   with_items:
     - docker.io
     - docker-compose
 
-- name: Clone remote repository
+- name: Clone repository from docker-compose.yaml
   git:
         repo: https://github.com/Elferey/less12.git
         dest: /tmp/github
