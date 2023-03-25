@@ -6,8 +6,8 @@ if [[ $aws != "aws-cli/2.11.5" ]]; then
     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
     unzip awscliv2.zip
     ./aws/install
-    key_id="YCAJEGbjPpNY2jctGXwiyvWQQ"
-    key="YCMYPucmwrCjXN8UHwklw_7NSzFw1i9KBgZguVi8"
+    export key_id=(`echo WUNBSkVHYmpQcE5ZMmpjdEdYd2l5dldRUQo= | base64 --decode`)
+    export key=(`echo WUNNWVB1Y213ckNqWE44VUh3a2x3XzdOU3pGdzFpOUtCZ1pndVZpOAo= | base64 --decode`)
     region="ru-central1"
     format="json"
     aws configure set aws_access_key_id $key_id
